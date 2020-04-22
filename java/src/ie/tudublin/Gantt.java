@@ -76,6 +76,7 @@ public class Gantt extends PApplet
 		textFont(f,12);
 		fill(255);
 		drawTimeSlots();
+		drawTasks();
 	}
 
 	public void drawTimeSlots() {
@@ -83,6 +84,13 @@ public class Gantt extends PApplet
 			text(i,22 * (i + 5),50);
 			stroke(255);
 			line(22 * (i + 5), 75, 22 * (i + 5), 550);
+		}
+	}
+
+	public void drawTasks() {
+		for (int i = 0; i < tasks.size(); i++) {
+			Task task = tasks.get(i);
+			text(task.getTaskName(),10,50 * (i + 2));
 		}
 	}
 
