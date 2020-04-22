@@ -1,12 +1,17 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
+import processing.core.PFont;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Gantt extends PApplet
 {
+	ArrayList<Task> tasks = new ArrayList<>();
+	PFont f;
 
 	public void settings()
 	{
@@ -24,6 +29,11 @@ public class Gantt extends PApplet
 			while ((line = br.readLine()) != null) {
 				if (count > 0) {
 					String[] taskString = line.split(splitBy);
+					Task task = new Task();
+					task.setTaskName(taskString[0]);
+					task.setStart(Integer.parseInt(taskString[1]));
+					task.setEnd(Integer.parseInt(taskString[2]));
+					tasks.add(task);
 				}
 				count++;
 			}
@@ -36,7 +46,10 @@ public class Gantt extends PApplet
 
 	public void printTasks()
 	{
-		
+		for(Task task: tasks)
+		{
+			println("Task name - " + task.getTaskName() + ", task start - " + task.getStart() + ", task end - " + task.getEnd());
+		}
 	}
 	
 	public void mousePressed()
@@ -51,12 +64,14 @@ public class Gantt extends PApplet
 
 	
 	
-	public void setup() 
+	public void setup()
 	{
+		loadTasks();
+		printTasks();
+		f = createFont("Arial",16,true);
 	}
 	
-	public void draw()
-	{			
+	public void draw() {
 		background(0);
 	}
 }
