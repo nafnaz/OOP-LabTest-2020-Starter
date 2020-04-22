@@ -73,5 +73,17 @@ public class Gantt extends PApplet
 	
 	public void draw() {
 		background(0);
+		textFont(f,12);
+		fill(255);
+		drawTimeSlots();
 	}
+
+	public void drawTimeSlots() {
+		for (int i = 0; i <= 30; i++) {
+			text(i,22 * (i + 5),50);
+			stroke(255);
+			line(22 * (i + 5), 75, 22 * (i + 5), 550);
+		}
+	}
+
 }
