@@ -91,6 +91,7 @@ public class Gantt extends PApplet
 		for (int i = 0; i < tasks.size(); i++) {
 			Task task = tasks.get(i);
 			text(task.getTaskName(),10,50 * (i + 2));
+			rect(22 * (5 + task.getStart()), 50 * (i + 1) + 30, (task.getEnd() - task.getStart()) * 22, 35);
 		}
 	}
 
