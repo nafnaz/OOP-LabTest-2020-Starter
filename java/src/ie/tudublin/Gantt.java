@@ -33,6 +33,7 @@ public class Gantt extends PApplet
 					task.setTaskName(taskString[0]);
 					task.setStart(Integer.parseInt(taskString[1]));
 					task.setEnd(Integer.parseInt(taskString[2]));
+					task.setColour();
 					tasks.add(task);
 				}
 				count++;
@@ -90,6 +91,8 @@ public class Gantt extends PApplet
 	public void drawTasks() {
 		for (int i = 0; i < tasks.size(); i++) {
 			Task task = tasks.get(i);
+			stroke(task.r, task.g, task.b);
+			fill(task.r, task.g, task.b);
 			text(task.getTaskName(),10,50 * (i + 2));
 			rect(22 * (5 + task.getStart()), 50 * (i + 1) + 30, (task.getEnd() - task.getStart()) * 22, 35);
 		}
